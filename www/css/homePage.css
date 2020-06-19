@@ -1,0 +1,337 @@
+body{
+    //background-color: #3c3a3a;
+}
+
+
+@media screen and (orientation: portrait) {
+	/*縱向*/
+	#home-mask{
+	  position: absolute;
+		width: 100vw;
+		height: 100vh;
+		z-index: 90;
+		background-color: #000;
+		top:0;
+		left:0;
+		opacity: 0;
+		animation: showMask 1.8s forwards linear;
+	}
+  
+	.home-btn{
+		font-weight:bold;
+		border:1px solid #fff;
+		padding:10px;
+		border-radius:5px;
+		width:30vw;
+		margin:auto;
+		background-color: #fff;
+		margin-top:20px;
+		opacity: 0;
+		animation: showControl 2.8s forwards linear;
+		cursor:pointer;
+	}
+	
+	#home-btn-1{
+		margin-top:40vh;
+	}
+	
+	#home-control{
+		text-align: center;
+		position: absolute;
+		width: 100vw;
+		z-index: 99;
+		left: 0;
+		top: 10vh;
+	}
+	
+	#home-control span{
+		font-size:12vh;
+		font-family: fantasy;
+		font-weight:bold;
+		-webkit-text-stroke: 4px #fff;
+		font-style: italic;
+		color: #000;
+		text-shadow:
+			4px 4px 0 #000,
+			-1px -1px 0 #000,  
+			1px -1px 0 #000,
+			-1px 1px 0 #000,
+			1px 1px 0 #000;
+		opacity: 0;
+		animation: showControl 2.5s forwards linear;
+	}
+	
+	#home-container{
+		position: relative;
+	}
+	
+	.home-card{
+		border:1px solid #000;
+		width:14vw;
+		height:calc(14vw*1.4);
+		border-radius:5px;
+		transform-origin: center calc(21vw*1.4);
+		background-color:#fff;
+		color:#000;
+		position: absolute;
+		text-align:center;
+		line-height:calc(14vw*1.4);
+		font-size:200%;
+		top: 25vh;
+		left: 42vw;
+	}
+	
+}
+
+@media screen and (orientation: landscape) {
+	/*橫向*/
+	
+	#container-1{
+		transform: rotateZ(-90deg);
+		-webkit-transform: rotateZ(-90deg);
+		-moz-transform: rotateZ(-90deg);
+		-ms-transform: rotateZ(-90deg);
+		-o-transform: rotateZ(-90deg);
+		transform: rotateZ(-90deg);
+		transform-origin: top left;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+	}
+	
+	#home-mask{
+		position: absolute;
+		width: 100vh;
+		height: 100vw;
+		z-index: 90;
+		background-color: #000;
+		top:0;
+		left:0;
+		opacity: 0;
+		animation: showMask 1.8s forwards linear;
+	}
+   
+	.home-btn{
+		font-weight:bold;
+		border:1px solid #fff;
+		padding:10px;
+		border-radius:5px;
+		width:30vh;
+		margin:auto;
+		background-color: #fff;
+		margin-top:20px;
+		opacity: 0;
+		animation: showControl 2.8s forwards linear;
+		cursor:pointer;
+	}   
+
+	#home-btn-1{
+		margin-top:40vw;
+	}
+	
+	#home-control{
+		text-align: center;
+		position: absolute;
+		width: 100vh;
+		z-index: 99;
+		left: 0;
+		top: 10vw;
+	}
+	
+	#home-control span{
+		font-size:12vw;
+		font-family: fantasy;
+		font-weight:bold;
+		-webkit-text-stroke: 4px #fff;
+		font-style: italic;
+		color: #000;
+		text-shadow:
+			4px 4px 0 #000,
+			-1px -1px 0 #000,  
+			1px -1px 0 #000,
+			-1px 1px 0 #000,
+			1px 1px 0 #000;
+		opacity: 0;
+		animation: showControl 2.5s forwards linear;
+	}
+	
+	#home-container{
+		position: relative;
+	}
+	
+	.home-card{
+		border:1px solid #000;
+		width:14vh;
+		height:calc(14vh*1.4);
+		border-radius:5px;
+		transform-origin: center calc(21vh*1.4);
+		background-color:#fff;
+		color:#000;
+		position: absolute;
+		text-align:center;
+		line-height:calc(14vh*1.4);
+		font-size:200%;
+		top: 25vw;
+		left: 42vh;
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#home-card-1{
+  z-index:1;
+  animation: rotate-1 0.1s forwards;
+}
+#home-card-2{
+  z-index:2;
+  animation: rotate-2 0.2s forwards;
+}
+#home-card-3{
+  z-index:3;
+  animation: rotate-3 0.3s forwards;
+}
+#home-card-4{
+  z-index:4;
+  animation: rotate-4 0.4s forwards;
+}
+#home-card-5{
+  z-index:5;
+  animation: rotate-5 0.5s forwards;
+}
+#home-card-6{
+  z-index:6;
+  animation: rotate-6 0.6s forwards;
+}
+#home-card-7{
+  z-index:7;
+  animation: rotate-7 0.7s forwards;
+}
+#home-card-8{
+  z-index:8;
+  animation: rotate-8 0.8s forwards;
+}
+#home-card-9{
+  z-index:9;
+  animation: rotate-9 0.9s forwards;
+}
+#home-card-10{
+  z-index:10;
+  animation: rotate-10 1s forwards;
+}
+#home-card-11{
+  z-index:11;
+  animation: rotate-11 1.1s forwards;
+}
+#home-card-12{
+  z-index:12;
+  animation: rotate-12 1.2s forwards;
+}
+#home-card-13{
+  z-index:13;
+  animation: rotate-13 1.3s forwards;
+}
+
+@keyframes rotate-1{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(27.6deg)}
+}
+
+@keyframes rotate-2{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(55.2deg)}
+}
+
+@keyframes rotate-3{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(82.8deg)}
+}
+
+@keyframes rotate-4{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(110.4deg)}
+}
+
+@keyframes rotate-5{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(138deg)}
+}
+
+@keyframes rotate-6{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(165.6deg)}
+}
+
+@keyframes rotate-7{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(193.2deg)}
+}
+
+@keyframes rotate-8{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(220.8deg)}
+}
+
+@keyframes rotate-9{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(248.4deg)}
+}
+
+@keyframes rotate-10{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(276deg)}
+}
+
+@keyframes rotate-11{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(303.6deg)}
+}
+
+@keyframes rotate-12{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(331.2deg)}
+}
+
+@keyframes rotate-13{
+    from{ transform: rotateZ(0deg)}
+    to{ transform: rotateZ(358.8deg)}
+}
+
+@keyframes showControl{
+  70%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+    
+}
+
+@keyframes showMask{
+  70%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 0.3;
+  }
+    
+}
+
+
+
+
+

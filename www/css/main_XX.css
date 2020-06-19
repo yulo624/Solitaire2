@@ -1,0 +1,128 @@
+body{
+  background-color: #8c7070;
+}
+#vue{
+  overflow:hidden;
+  width:90vw;
+  height:90vh;
+  position: relative;
+  margin: 5vh auto;
+}
+.card{
+    border: 1px solid #000;
+  background-color:#fff;
+    position: absolute;
+    width: calc(18vw - 6px);
+    height: calc(18vh - 6px);
+    text-align: center;
+    border-radius: 7px;
+    line-height:calc(18vh - 6px);
+    font-size: 8vh;
+    left: -18vw;
+    -webkit-transition: left 0.5s, top 0.5s, line-height 0.5s, -webkit-transform 1s;
+    transition: left 0.5s, top 0.5s, line-height 0.5s, -webkit-transform 1s;
+    transition: transform 1s, left 0.5s, top 0.5s, line-height 0.5s;
+    transition: transform 1s, left 0.5s, top 0.5s, line-height 0.5s, -webkit-transform 1s;
+  cursor:pointer;
+}
+.card[choose="yes"] {
+  background-color: #FFEB3B;
+}
+
+.card[data-order="0"] {
+  left: -18vw;
+  /*display:none;*/
+}
+
+.card[data-order="1"] {
+  left: 0;
+}
+.card[data-order="2"] {
+  left: 18vw;
+}
+.card[data-order="3"] {
+  left: 36vw;
+}
+.card[data-order="4"] {
+  left: 54vw;
+}
+
+.card[data-order="5"] {
+  left: 72vw;
+}
+
+.card[data-order="6"] {
+  left: 90vw;
+  /*display:none;*/
+}
+
+.card[data-row="0"] {
+  top: -18vh;
+  /*display:none;*/
+}
+
+.card[data-row="1"] {
+  top: 0;
+}
+.card[data-row="2"] {
+  top: 18vh;
+}
+.card[data-row="3"] {
+  top: 36vh;
+}
+.card[data-row="4"] {
+  top: 54vh;
+}
+
+.card[data-row="5"] {
+  top: 72vh;
+}
+
+.card[data-row="6"] {
+  top: 90vh;
+  /*display:none;*/
+}
+
+.card[card-isShow="no"]{
+  display:none;
+}
+
+.card-max{
+  text-align:left;
+}
+.card-min{
+  text-align:right;
+}
+.card[data-status="2"]{
+  line-height:calc(10vh - 6px);
+}
+
+.card[data-status="2"]::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  width:100%;
+  height:3px;
+  box-sizing:border-box;
+  border-bottom:1px solid #c18b52;
+  border-top: 1px solid #ff880a;
+  transform-origin:bottom center;
+  //transform:rotateZ(-45deg) scale(1.414);
+  animation:slash 0.5s forwards;
+}
+
+@keyframes slash{
+  0%{
+    transform:rotateZ(0deg) scale(1);
+  }
+  30%{
+    transform:rotateZ(-45deg) scale(1);
+  }
+  60%{
+    transform:rotateZ(-45deg) scale(1.414);
+  }
+  100%{
+    transform:rotateZ(-45deg) scale(1.414);
+  }
+}

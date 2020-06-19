@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Configuration Start: Please customize following configuration -->
+        <title>Solitaire</title>
+        <!-- Configuration End -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!--
+        <link href='style.css' rel='stylesheet' type='text/css'/>
+		-->
+        <script type="text/javascript" src="cordova.js"></script>
+		
+		<script src="./lib/vue-2.0.3/dist/vue.min.js"></script>
+		<script src="./js/main.js"></script>
+		<link href="./lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+		<link href="./css/homePage.css" rel="stylesheet" type="text/css" />
+		<link href="./css/main.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div id="vue" v-cloak>
+	<div id="container-1" v-if="showHome">
+		<div id="home-mask" v-if="showHome"></div>
+		<div id="home-control" v-if="showHome">
+			<span>Solitaire</span>
+			<div class="home-btn" id="home-btn-1" @touchstart="startGame('continue')" v-if="hasRecord">繼續遊戲</div>
+			<div class="home-btn" @touchstart="reStartGame()" v-if="hasRecord">重新開始</div>
+			
+			<div class="home-btn" id="home-btn-1" @touchstart="startGame('leisure')" v-if="!hasRecord">休閒模式</div>
+			<div class="home-btn" @touchstart="startGame('normal')" v-if="!hasRecord">計時模式</div>
+			
+		</div>
+		<div id="home-container" v-if="showHome">
+			<div class="home-card" id="home-card-1">A</div>  
+			<div class="home-card" id="home-card-2">2</div>  
+			<div class="home-card" id="home-card-3">3</div>  
+			<div class="home-card" id="home-card-4">4</div>  
+			<div class="home-card" id="home-card-5">5</div>  
+			<div class="home-card" id="home-card-6">6</div>  
+			<div class="home-card" id="home-card-7">7</div>  
+			<div class="home-card" id="home-card-8">8</div>  
+			<div class="home-card" id="home-card-9">9</div>  
+			<div class="home-card" id="home-card-10">10</div>  
+			<div class="home-card" id="home-card-11">J</div>  
+			<div class="home-card" id="home-card-12">Q</div>  
+			<div class="home-card" id="home-card-13">K</div>  
+		</div>
+	</div>
+	<div id="container-2" v-if="!showHome">
+		<div id="topPanel" v-if="!showHome">
+			<!--
+			<div id="levelPanel">
+				<span>Level:</span>
+				<span>{{level}}</span>
+			</div>
+			
+			<div id="movePanel">
+				<span>Move:</span>
+				<span>{{move}}</span>
+			</div>
+			-->
+			<div id="levelPanel">
+				<span>{{level}}</span>
+			</div>
+			<div id="scorePanel">
+				<span>Score:</span>
+				<span>{{score}}</span>
+				<!--
+				<span><i class="fa fa-shirtsinbulk"></i>&nbsp;{{score}}</span>
+				-->
+				
+				
+					<!--
+					<i class="fa fa-stack-overflow"></i>
+					<i class="fa fa-shoe-prints"></i>
+					<i class="fa fa-power-off"></i>
+					<i class="fa fa-trophy"></i>
+					<i class="fa fa-home" aria-hidden="true"></i>
+					-->
+			</div>
+			<div id="finishPanel">
+				<span>
+					<i class="fa fa-clone"></i>
+					&nbsp;
+					{{finishRow}}
+				</span>
+				<span>
+					<i class="fa fa-exchange"></i>
+					&nbsp;
+					{{move}}
+				</span>
+			</div>
+			
+			<div id="mainMenu-btn" @click="openMenu()">
+				<i class="fa fa-bars"></i>
+			</div>
+			<!--
+			<div id="resetTest" @click="resetData()">
+				reset 
+			</div>
+			-->
+			<div id="timeBarContainer" v-if="mode=='normal'">
+				<div id="timeBar" v-if="mode=='normal'" :style="'width:' + timeBar + '%'"></div>
+			</div>
+			
+			
+			
+		</div>
+		<div id="mainPanel" v-if="!showHome">
+		
+			<div class="card" v-for="card in cards" :data-order="card.order" :data-row="card.row" @touchstart="selectCard(card)" :choose="card.choose" :data-status="card.status" :card-isShow="card.isShow" :card-isEnd="card.isEnd">
+			  
+			  <div v-if="card.status==1">{{ card.no }}</div>
+			  <div v-if="card.status==2">
+				  <div class="card-max">{{ card.max }}</div>
+				  <div class="card-min">{{ card.min }}</div>
+			  </div>
+			  
+			</div>
+			
+			<transition @after-enter="finishOver">
+				<div id="finish-card" :data-order="finishCard.order" :data-row="finishCard.row" v-show="isFinish"></div>
+			</transition>
+		</div>
+		
+		<div id="play-mask" v-if="!showHome && showMask"></div>
+		<transition name="fade">
+			<div id="level-up-view" v-if="!showHome && isLevelUp">
+				<div id="level-mes">Level Up</div>
+			</div>
+		</transition>
+		
+		<div id="end-view" v-if="!showHome && isEnd">
+			<div id="end-mes">{{ endMessage }}</div>
+			<div id="res-btn" v-if="endMessage=='You Lose'" @touchstart="keepPlay()">我要繼續</div>
+			<br>
+			<div id="res-btn" @touchstart="sureEnd()">確定結束</div>
+		</div>
+		
+		<div id="rank-view" v-if="!showHome && showRank">
+			<div id="rank-title">
+				<span><i class="fa fa-trophy"></i><i class="fa fa-trophy"></i><i class="fa fa-trophy"></i></span>
+			</div>
+			<div class="rank-bar-title">
+				<span>排名</span>
+				<span>分數</span>
+				<span>等級</span>
+			</div>
+			<div class="rank-container">
+				<div v-for="(data,index) in rankData" :class="[ (index==thisTimeRankIndex) ? 'rank-bar-sel' : 'rank-bar' ]">
+					<span>{{ index+1 }}</span>
+					<span>{{ data.score }}</span>
+					<span>{{ data.level }}</span>
+				</div>
+			</div>		
+			<div id="res-btn" v-if="isEnd" @touchstart="reStartGame()">重新開始</div>
+			<div id="res-btn" v-if="!isEnd" @touchstart="closeRankView()">確定</div>
+		</div>
+		
+		<div id="teaching-view" v-if="!showHome && showTeaching">
+			
+			<div class="teaching-title">{{teaching_title}}</div>
+			<div class="teaching-container" v-if="isTeaching_1">
+				<img src="./img/Teaching_1.png" alt="">
+			</div>
+			<div class="teaching-container" v-if="!isTeaching_1">
+				<img src="./img/Teaching_2.png" alt="">
+			</div>
+			<div class="teaching-control">
+				<div @touchstart="changeTeachingView()" v-if="isTeaching_1">下一頁</div>
+				<div @touchstart="changeTeachingView()" v-if="!isTeaching_1">上一頁</div>
+				<div @touchstart="closeTeachingView()" v-if="!isTeaching_1">確定</div>
+			</div>
+			
+		</div>
+		
+		<div id="mainMenu" v-if="!showHome && showMenu">
+			<div>Solitaire</div>
+			<div @touchstart="backHome()">
+				<span><i class="fa fa-home"></i>回主畫面</span>
+			</div>
+			<div @touchstart="showTeachingView()">
+				<span><i class="fa fa-book"></i>教學</span>
+			</div>
+			<div @touchstart="showRankView()">
+				<span><i class="fa fa-trophy"></i>排行榜</span>
+			</div>
+			<div @touchstart="closeMenu()">
+				<span><i class="fa fa-reply"></i>回到遊戲</span>
+			</div>
+		</div>
+
+		
+	</div>
+	
+	
+	
+	
+ 
+  </div>
+    </body>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript">
+		function onDeviceReady() {
+			admob.initAdmob("ca-app-pub-5854384933399675/1178304080",null);
+			admob.showBanner(admob.BannerSize.BANNER,admob.Position.BOTTOM_APP);
+		}
+		document.addEventListener('deviceready',onDeviceReady, false);
+	</script>
+</html>
