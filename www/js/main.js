@@ -332,6 +332,7 @@ function checkLose(now_cards){
 		if(card_1.isShow != null && card_1.isShow == "yes" && card_1.row != 0 && card_1.row != 6 && card_1.order != 0 && card_1.order != 6){
 			if(card_1.max == "K"){
 				hasK = true;
+				return hasK;
 			}
 		}
 	});
@@ -343,14 +344,11 @@ function checkLose(now_cards){
 				if(card_2.isShow != null && card_2.isShow == "yes" && card_2.row != 0 && card_2.row != 6 && card_2.order != 0 && card_2.order != 6){
 					
 					if(hasK){
-						
-						if( (card_1.row + 1) == card_2.row || (card_1.row - 1) == card_2.row || (card_1.order + 1) == card_2.order || (card_1.order - 1) == card_2.order){
-							if(getLevel(card_1.max) == getLevel(card_2.min) - 1 || getLevel(card_1.min) == getLevel(card_2.max) + 1){
-								isLose = false;
-								break;
-							}
+						//有K就不檢查是不是相鄰的
+						if(getLevel(card_1.max) == getLevel(card_2.min) - 1 || getLevel(card_1.min) == getLevel(card_2.max) + 1){
+							isLose = false;
+							break;
 						}
-						
 					}
 					
 					if( ( (card_1.row + 1) == card_2.row || (card_1.row - 1) == card_2.row ) && card_1.order == card_2.order ){
@@ -449,11 +447,10 @@ var vm = new Vue({
 					}
 					if(vm.time <= 0){
 						//時間到!!
-						vm.showMask = true;
-						vm.isEnd = true;
+						//vm.showMask = true;
+						//vm.isEnd = true;
 						vm.endMessage = "Time's up";
 						vm.showEndAnima();
-						//alert("you lose!");
 						window.clearInterval(vm.timer);
 						
 					}
@@ -733,13 +730,12 @@ var vm = new Vue({
           this.cards[index_1].choose = "no";
 		  
 		  if(checkLose(this.cards)){
-			this.showMask = true;
-			this.isEnd = true;
+			//this.showMask = true;
+			//this.isEnd = true;
 			this.endMessage = "You Lose";
 			this.showEndAnima();
 		  }
-		  
-		  
+
 		  
         }
       },
