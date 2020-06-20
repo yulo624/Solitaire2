@@ -8,7 +8,8 @@
 	#Ad-container{
 		width:100vw;
 		height: 8vh;
-		background-color: #8c7070;
+		background-color: #c7c7c7;
+		overflow: auto;
 	}
 	    
 	
@@ -454,7 +455,8 @@
 	#Ad-container{
 		width:100vh;
 		height: 8vw;
-		background-color: #8c7070;
+		background-color: #c7c7c7;
+		overflow: auto;
 	}
 	
 	#container-2{
