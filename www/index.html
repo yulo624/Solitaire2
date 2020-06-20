@@ -190,7 +190,7 @@
 			</div>
 		</div>
 
-		
+		<div id="Ad-container"></div>
 	</div>
 	
 	
@@ -213,7 +213,9 @@
 		  
 		  // Set AdMobAds options:
 		  admob.setOptions({
-			bannerAdId:"ca-app-pub-5854384933399675/1178304080"
+			bannerAdId:"ca-app-pub-5854384933399675/1178304080",
+			customHTMLElement: document.querySelector('#Ad-container'),
+			autoShowInterstitial: true
 			//publisherId:"ca-app-pub-5854384933399675/1178304080"
 		  });
 		  
@@ -221,7 +223,7 @@
 		  admob.createBannerView();
 		  
 		  // Request interstitial (will present automatically when autoShowInterstitial is set to true)
-		  admob.requestInterstitialAd();
+		  //admob.requestInterstitialAd();
 		}
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
