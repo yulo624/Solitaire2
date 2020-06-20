@@ -4,15 +4,6 @@
 
 @media screen and (orientation: portrait) {
 	/*縱向*/
-	
-	#Ad-container{
-		width:100vw;
-		height: 8vh;
-		background-color: #c7c7c7;
-		overflow: auto;
-	}
-	    
-	
 	#topPanel{
 		width:100%;
 		min-height:8vh;
@@ -451,14 +442,6 @@
 
 @media screen and (orientation: landscape) {
 	/*橫向*/
-	
-	#Ad-container{
-		width:100vh;
-		height: 8vw;
-		background-color: #c7c7c7;
-		overflow: auto;
-	}
-	
 	#container-2{
 		transform: rotateZ(-90deg);
 		-webkit-transform: rotateZ(-90deg);
