@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- Configuration Start: Please customize following configuration -->
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="Solitaire.yulo.info" version="1.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="Solitaire.yulo.info" version="1.0.2">
     
     <name>Solitaire2</name>
     <description>接龍遊戲2</description>
@@ -28,4 +28,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />
     <plugin name="cordova-plugin-network-information" spec="~1.3.3" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
+	<gap:plugin name="phonegap-admob" source="npm"/>
 </widget>
