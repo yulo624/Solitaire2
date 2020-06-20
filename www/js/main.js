@@ -393,9 +393,9 @@ function checkLose(now_cards){
 		  admob.setOptions({
 			//bannerAdId:"ca-app-pub-5854384933399675/1178304080",
 			bannerAdId:"ca-app-pub-3940256099942544/6300978111",  //測試用廣告
-			
-			customHTMLElement: document.querySelector('#Ad-container'),
-			autoShowInterstitial: true
+			isTesting:true,
+			adSize:admob.AD_SIZE.BANNER
+			//autoShowInterstitial: true
 			//publisherId:"ca-app-pub-5854384933399675/1178304080"
 		  });
 		  
@@ -407,6 +407,9 @@ function checkLose(now_cards){
 		}
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
+	}
+	function closeAd(){
+		 admob.destroyBannerView();
 	}
 
 var vm = new Vue({
@@ -490,6 +493,7 @@ var vm = new Vue({
 			localStorage.removeItem("lastData");
 			localStorage.removeItem("lastTimeData");
 			window.location.reload();
+			closeAd();
 		},
 		setTimeBar:function(){
 			if(this.time >= 300){
@@ -852,6 +856,7 @@ var vm = new Vue({
 		 localStorage.removeItem("lastData");
 		 localStorage.removeItem("lastTimeData");
 		 window.location.reload();
+		 closeAd();
 	  },
 	  check:function(){
 		alert(JSON.stringify(this.cards));
@@ -866,6 +871,7 @@ var vm = new Vue({
 	  },
 	  backHome:function(){
 		 window.location.reload(); 
+		 closeAd();
 	  }
     }
 });
