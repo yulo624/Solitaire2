@@ -387,23 +387,28 @@ function checkLose(now_cards){
 
 	function showAd(){
 		 function onDeviceReady() {
-		  document.removeEventListener('deviceready', onDeviceReady, false);
-		  
-		  // Set AdMobAds options:
-		  admob.setOptions({
-			bannerAdId:"ca-app-pub-5854384933399675/1178304080",
-			//bannerAdId:"ca-app-pub-3940256099942544/6300978111",  //測試用廣告
-			//isTesting:true,
-			adSize:admob.AD_SIZE.SMART_BANNER
-			//autoShowInterstitial: true
-			//publisherId:"ca-app-pub-5854384933399675/1178304080"
-		  });
-		  
-		  // Start showing banners (atomatic when autoShowBanner is set to true)
-		  admob.createBannerView();
-		  
-		  // Request interstitial (will present automatically when autoShowInterstitial is set to true)
-		  //admob.requestInterstitialAd();
+			try {
+				document.removeEventListener('deviceready', onDeviceReady, false);	
+				
+				// Set AdMobAds options:
+				  admob.setOptions({
+					bannerAdId:"ca-app-pub-5854384933399675/1178304080",
+					//bannerAdId:"ca-app-pub-3940256099942544/6300978111",  //測試用廣告
+					//isTesting:true,
+					adSize:admob.AD_SIZE.SMART_BANNER
+					//autoShowInterstitial: true
+					//publisherId:"ca-app-pub-5854384933399675/1178304080"
+				  });
+				
+				// Start showing banners (atomatic when autoShowBanner is set to true)
+		  		admob.createBannerView();
+				
+				// Request interstitial (will present automatically when autoShowInterstitial is set to true)
+		  		//admob.requestInterstitialAd();
+			} catch (err) {
+			    console.log('Error creating banner:', err);
+				alert(err);
+			}
 		}
 		
 		document.addEventListener("deviceready", onDeviceReady, false);
