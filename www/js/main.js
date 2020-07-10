@@ -398,7 +398,7 @@ function checkLose(now_cards){
 					  interstitialAdId:"ca-app-pub-3940256099942544/6300978111", //測試用廣告
 					//isTesting:true,
 					//adSize:admob.AD_SIZE.SMART_BANNER
-					//autoShowInterstitial: true
+					autoShowInterstitial: true
 					//publisherId:"ca-app-pub-5854384933399675/1178304080"
 				  });
 				
