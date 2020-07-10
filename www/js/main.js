@@ -396,7 +396,7 @@ function checkLose(now_cards){
 			//isTesting:true,
 			adSize:admob.AD_SIZE.SMART_BANNER
 			//autoShowInterstitial: true
-			//publisherId:"ca-app-pub-5854384933399675/1178304080"
+			publisherId:"ca-app-pub-5854384933399675/1178304080"
 		  });
 		  
 		  // Start showing banners (atomatic when autoShowBanner is set to true)
