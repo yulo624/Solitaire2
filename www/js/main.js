@@ -390,6 +390,8 @@ function checkLose(now_cards){
 			try {
 				document.removeEventListener('deviceready', onDeviceReady, false);	
 				
+				admob.initAdmob("ca-app-pub-3940256099942544/6300978111","ca-app-pub-3940256099942544/6300978111");
+				
 				// Set AdMobAds options:
 				  admob.setOptions({
 					//bannerAdId:"ca-app-pub-5854384933399675/1178304080",
