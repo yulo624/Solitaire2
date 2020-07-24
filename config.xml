@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <!-- Configuration Start: Please customize following configuration -->
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="Solitaire.yulo.info" version="1.0.13">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="Solitaire.yulo.info" version="1.0.14">
     
     <name>Solitaire2</name>
     <description>接龍遊戲2</description>
